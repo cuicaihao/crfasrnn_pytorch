@@ -25,6 +25,9 @@ import torch
 
 from crfasrnn import util
 from crfasrnn.crfasrnn_model import CrfRnnNet
+import os
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
 def main():

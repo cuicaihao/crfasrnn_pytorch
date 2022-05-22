@@ -28,6 +28,9 @@ import torch
 
 from crfasrnn import util
 from crfasrnn.crfasrnn_model import CrfRnnNet
+import os
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
 def main():
@@ -38,8 +41,10 @@ def main():
         help="Path to the .pth file (download from https://tinyurl.com/crfasrnn-weights-pth)",
         required=True,
     )
-    parser.add_argument("--image", help="Path to the input image", required=True)
-    parser.add_argument("--output", help="Path to the output label image", default=None)
+    parser.add_argument(
+        "--image", help="Path to the input image", required=True)
+    parser.add_argument(
+        "--output", help="Path to the output label image", default=None)
     args = parser.parse_args()
 
     img_data, img_h, img_w, size = util.get_preprocessed_image(args.image)
